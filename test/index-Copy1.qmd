@@ -1,0 +1,366 @@
+---
+title: "Storytelling con Datos"
+author: "Luis Miguel de la Cruz Salas"
+institute: "Depto. de Recursos Naturales, IGEF-UNAM"
+date: "24/03/26"
+format: revealjs
+---
+
+## Introducción
+
+El **storytelling es un diferenciador** y no solo un decorado sobre gráficas.
+
+## 
+
+![](./figuras/freytag_arc_hackods.png){fig-align="center"  width=100% .lightbox}
+
+## Arco dramático (Freytag)
+
+La pirámide o arco dramático de Freytag, desarrollada por el dramaturgo alemán Gustav Freytag en 1863, es un modelo de estructura narrativa de cinco actos que organiza la tensión dramática, comúnmente utilizada para analizar tragedias clásicas y shakesperianas.
+
+## Partes del arco dramático.
+
+<font style="font-size:35px;">
+
+* **Exposición** (Introducción) : Se presentan los personajes, el escenario y el conflicto central.
+* **Acción ascendente** (Complicación): La tensión aumenta a medida que el protagonista se enfrenta a complicaciones y obstáculos.
+* **Clímax** (Momento crucial): El punto culminante y de mayor impacto emocional, a menudo un punto de no retorno para el protagonista.
+* **Acción descendente** (Disminuye la tensión): Las consecuencias del clímax comienzan a desarrollarse.
+* **Desenlace** (Catástrofe/Resolución): La resolución final del conflicto. En la tragedia clásica, suele ser la caída o muerte del protagonista. 
+
+</font>
+
+Elementos adicionales:
+Freytag también incluyó tres momentos críticos: la "fuerza excitante" (incidente incitador), la "fuerza trágica" y la "fuerza de la tensión final".
+
+## Arco dramático para los tableros.
+
+### Filosofía de diseño narrativo
+
+* El tablero **no es una colección de gráficas** — es una historia que el usuario *vive* mientras se desplaza en las diferentes secciones. 
+* Cada sección corresponde a una etapa del arco dramático de Freytag, y la transición entre ellas debe sentirse como un giro emocional, no como un cambio de pestaña.
+
+---
+
+## Secciones recomendadas.
+
+
+## Acto 1 — El Gancho.
+
+**"¿Qué tiene que ver esto contigo?")**
+
+> *Exposición con tensión inmediata*
+
+**Objetivo narrativo:** Anclar el problema global en algo local e íntimo. 
+
+* No empezar con *"el mundo enfrenta…"* sino con un dato que golpee: *"En tu colonia, 85% de los hogares…"*
+
+## Acto 2 — La Escalada
+
+**"¿Qué tan grave es?")**
+
+> *Rising action: mostrar la tendencia que empeora*
+
+**Objetivo narrativo:** Construir tensión con datos temporales. 
+
+* El lector debe sentir que el tiempo se acaba.
+
+## Acto 3 — El Clímax 
+
+**"El momento de la verdad")**
+
+> *La gráfica que cambia todo*
+
+**Objetivo narrativo:** Una sola visualización que condensa la paradoja o la injusticia central. 
+
+* Debe ser la imagen que el lector recuerde al cerrar el tablero.
+
+## Acto 4 — La Caída 
+
+**"Pero no todo está perdido"**
+
+> *Falling action: mostrar casos de éxito locales reales*
+
+**Objetivo narrativo:** Romper el pesimismo con evidencia.
+
+* No usar promesas institucionales, sino con datos de comunidades que sí lo lograron — y mostrar *cómo*.
+
+## Acto 5 — La Resolución 
+
+**"Tú puedes ser parte")**
+
+> *Llamado a la acción basado en datos*
+
+**Objetivo narrativo:** El tablero termina con una pregunta abierta, no con una conclusión cerrada. 
+
+* El lector debe sentir que tiene poder de actuar, que no es un espectador pasivo sino alguien cuyas decisiones o acciones importan.
+
+## XYZ
+
+* La idea viene del diseño de videojuegos, donde la acción del jugador es fundamental: 
+    - el jugador siente que sus elecciones tienen consecuencias reales dentro del mundo del juego. 
+* Los mejores tableros de datos hacen lo mismo — convierten al lector en protagonista, no en audiencia.
+
+## XYZ
+
+* En el contexto del tablero de ODS, significa que al terminar de ver los datos, el usuario no piensa *"qué triste, qué problema tan grande"* y cierra la pestaña — sino que piensa *"yo puedo hacer algo al respecto"*.
+
+* Es lo contrario de la parálisis por análisis o el llamado **doom scrolling**: cuando los datos son tan abrumadores que en lugar de motivar, paralizan.
+
+## XYZ
+
+* En la práctica, se logra con cosas como:
+    - Terminar con una pregunta abierta en lugar de una conclusión cerrada
+    - Mostrar casos donde comunidades pequeñas sí lograron cambios reales
+    - Incluir una calculadora de impacto donde el usuario experimenta con variables
+    - Que el lenguaje diga "¿qué harías tú?" en lugar de "esto es lo que los gobiernos deben hacer"
+
+
+---
+
+## Arquitectura en Quarto (`.qmd`)
+
+```
+proyecto/
+├── index.qmd              ← Documento principal (dashboard)
+├── _quarto.yml            ← Config global
+├── data/
+│   └── ods_data.csv       ← Datos limpios y contextualizados
+├── scripts/
+│   ├── load_data.py       ← Carga y limpieza
+│   ├── narrative.py       ← Funciones de storytelling (anotaciones, hitos)
+│   └── charts.py          ← Todas las figuras Plotly
+├── assets/
+│   └── custom.scss        ← Estilos narrativos
+└── README.md
+```
+
+## Componentes técnicos (Acto 1).
+
+```python
+# Mapa coroplético de México a nivel municipal
+# con el ODS seleccionado como capa base
+import plotly.express as px
+
+fig = px.choropleth_mapbox(
+    df_municipios,
+    geojson=geojson_mexico,
+    locations='CVE_MUN',
+    color='indice_rezago',
+    hover_data=['municipio', 'poblacion', 'valor_ods'],
+    mapbox_style="carto-positron",
+    zoom=4,
+    center={"lat": 23.6, "lon": -102.5},
+    color_continuous_scale="RdYlGn_r",
+    title="📍 El problema no está lejos — está aquí"
+)
+```
+
+## En Quarto:
+
+```yaml
+# _quarto.yml
+format:
+  dashboard:
+    scrolling: true
+    nav-buttons: [github]
+```
+
+```markdown
+## {.hero}
+::: {.callout-hook}
+**Dato gancho**: En México, 52 municipios no alcanzarán la meta X del ODS 2 antes de 2030. 
+Uno de ellos está a menos de 100 km de donde estás leyendo esto.
+:::
+```
+
+---
+
+## Componentes técnicos (Acto 2).
+
+```python
+# Línea de tiempo animada con umbral crítico visible
+fig = go.Figure()
+
+# Línea de progreso real
+fig.add_trace(go.Scatter(
+    x=años, y=avance_real,
+    mode='lines+markers',
+    name='Avance real',
+    line=dict(color='#E63946', width=3)
+))
+
+# Línea de meta requerida
+fig.add_trace(go.Scatter(
+    x=años, y=meta_2030,
+    mode='lines',
+    name='Trayectoria necesaria',
+    line=dict(color='#2A9D8F', dash='dash', width=2)
+))
+
+# ANOTACIÓN NARRATIVA — esto es lo que la IA no haría sola
+fig.add_annotation(
+    x=2020, y=avance_real[año==2020],
+    text="📌 Pandemia: retroceso de 8 años en un trimestre",
+    showarrow=True,
+    font=dict(size=12, color='#E63946')
+)
+
+# Área de "brecha creciente"
+fig.add_vrect(
+    x0=2020, x1=2024,
+    fillcolor="#E63946", opacity=0.1,
+    annotation_text="Zona de crisis"
+)
+```
+
+##
+
+**Principio narrativo aplicado:** Las anotaciones NO son automáticas. Cada `add_annotation()` debe ser colocada manualmente por el equipo, con texto que refleje contexto local. **Aquí es donde se evalúa si hubo storytelling real.**
+
+---
+
+## Componentes técnicos (Acto 3).
+
+```python
+# Beeswarm / strip plot: cada punto es una persona real
+# Comparación entre grupos que deberían ser iguales
+
+fig = px.strip(
+    df_personas,
+    x='acceso_servicio',
+    y='grupo_poblacional',
+    color='quintil_ingreso',
+    hover_data=['estado', 'historia_breve'],  # ← dato humanizado
+    title="La misma meta, resultados distintos según dónde naciste"
+)
+
+# O bien: Sankey de flujos de inequidad
+fig = go.Figure(go.Sankey(
+    node=dict(label=nodos_narrativos),
+    link=dict(source=origen, target=destino, value=flujo,
+              color=colores_por_inequidad)
+))
+```
+
+## En Quarto — la sección más importante del documento:
+
+```markdown
+## El Clímax {.fullscreen background-color="#0d1b2a"}
+
+> *"No es un problema de recursos — es un problema de distribución."*
+
+[Aquí la gráfica de clímax ocupa el 80% de la pantalla]
+
+::: {.insight-box}
+Este gráfico muestra que los municipios con mayor rezago en ODS 6 
+reciben 3 veces menos inversión federal que los que ya cumplieron la meta.
+La brecha se amplía, no se cierra.
+:::
+```
+
+---
+
+
+## Componentes técnicos (Acto 4).
+
+```python
+# Small multiples: comparación de municipios similares
+# con distintas trayectorias
+fig = make_subplots(
+    rows=2, cols=3,
+    subplot_titles=municipios_exitosos,
+    shared_yaxes=True
+)
+
+for i, mun in enumerate(municipios_exitosos):
+    fig.add_trace(
+        go.Bar(
+            x=df[df.municipio==mun]['año'],
+            y=df[df.municipio==mun]['indicador'],
+            marker_color=color_exito,
+            name=mun
+        ),
+        row=(i//3)+1, col=(i%3)+1
+    )
+
+# Widget interactivo: "¿Qué pasaría si...?"
+# Slider que proyecta escenarios
+fig_escenario = go.Figure()
+# ... con rangeslider temporal + dropdown de política pública
+```
+
+---
+
+## Componentes técnicos (Acto 5)
+
+```python
+# Calculadora de impacto personal / comunitario
+# Input: parámetros locales → Output: contribución estimada al ODS
+
+fig_impacto = go.Figure(go.Indicator(
+    mode="gauge+number+delta",
+    value=impacto_calculado,
+    title={'text': "Tu comunidad podría avanzar X% en ODS 3 si..."},
+    gauge={
+        'axis': {'range': [0, 100]},
+        'bar': {'color': "#2A9D8F"},
+        'steps': [
+            {'range': [0, 40], 'color': "#E63946"},
+            {'range': [40, 70], 'color': "#F4A261"},
+            {'range': [70, 100], 'color': "#2A9D8F"}
+        ]
+    }
+))
+```
+
+
+## {.resolution}
+
+### ¿Qué harías tú con estos datos?
+
+Este tablero no termina aquí — termina cuando alguien toma una decisión.
+
+[Formulario de compromiso / liga a recursos locales]
+
+---
+
+## Criterios de evaluación diferenciada.
+
+<font style="font-size:20px;">
+
+| Criterio | Peso | Lo que la IA puede hacer | Lo que requiere criterio humano |
+|----------|------|--------------------------|----------------------------------|
+| **Calidad narrativa** | 35% | Texto genérico sobre ODS | Anotaciones contextualizadas, dato gancho local |
+| **Coherencia del arco** | 20% | Secciones separadas | Tensión que fluye entre actos |
+| **Pertinencia local** | 20% | Datos nacionales | Conexión con problema específico del equipo |
+| **Uso técnico de Quarto+Plotly** | 15% | Dashboard funcional | Interactividad que sirve la narrativa |
+| **Diseño editorial** | 10% | Colores por defecto | Sistema visual con intención |
+
+</font>
+---
+
+## Lo que hace este enfoque difícil de delegar a la IA
+
+<font style="font-size:20px;">
+
+1. **Las anotaciones narrativas** (`add_annotation`) requieren saber *por qué* ese momento en la línea de tiempo importa en el contexto local
+2. **El dato gancho del Act 0** exige haber investigado algo específico de la comunidad del equipo
+3. **La selección del ODS y el municipio/región** debe justificarse con experiencia vivida o investigación original
+4. **La voz editorial** en los `callout-hook` y `insight-box` revela si hay un humano con criterio detrás
+
+</font>
+
+## Gráfico de ejemplo
+
+```{python}
+import numpy as np
+import matplotlib.pyplot as plt
+
+x = np.linspace(0, 10)
+y = np.sin(x)
+
+plt.plot(x, y)
+plt.title("Ejemplo")
+plt.show()
+```

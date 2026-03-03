@@ -1,0 +1,148 @@
+---
+title: "Storytelling con Datos"
+author: "Luis Miguel de la Cruz Salas"
+institute: "Depto. de Recursos Naturales, IGEF-UNAM"
+date: "24/03/26"
+format: revealjs
+---
+
+## Introducción
+
+El **storytelling es un diferenciador** y no solo un decorado sobre gráficas.
+
+## 
+
+![](./figuras/freytag_arc_hackods.png){fig-align="center"  width=100% .lightbox}
+
+## Arco dramático (Freytag)
+
+La pirámide o arco dramático de Freytag, desarrollada por el dramaturgo alemán Gustav Freytag en 1863, es un modelo de estructura narrativa de cinco actos que organiza la tensión dramática, comúnmente utilizada para analizar tragedias clásicas y shakesperianas.
+
+## Partes del arco dramático.
+
+<font style="font-size:35px;">
+
+* **Exposición** (Introducción) : Se presentan los personajes, el escenario y el conflicto central.
+* **Acción ascendente** (Complicación): La tensión aumenta a medida que el protagonista se enfrenta a complicaciones y obstáculos.
+* **Clímax** (Momento crucial): El punto culminante y de mayor impacto emocional, a menudo un punto de no retorno para el protagonista.
+* **Acción descendente** (Disminuye la tensión): Las consecuencias del clímax comienzan a desarrollarse.
+* **Desenlace** (Catástrofe/Resolución): La resolución final del conflicto. En la tragedia clásica, suele ser la caída o muerte del protagonista. 
+
+</font>
+
+Elementos adicionales:
+Freytag también incluyó tres momentos críticos: la "fuerza excitante" (incidente incitador), la "fuerza trágica" y la "fuerza de la tensión final".
+
+## Arco dramático para los tableros.
+
+### Filosofía de diseño narrativo
+
+* El tablero **no es una colección de gráficas** — es una historia que el usuario *vive* mientras se desplaza en las diferentes secciones. 
+* Cada sección corresponde a una etapa del arco dramático de Freytag, y la transición entre ellas debe sentirse como un giro emocional, no como un cambio de pestaña.
+
+---
+
+## Secciones recomendadas.
+
+
+## Acto 1 — El Gancho.
+
+**"¿Qué tiene que ver esto contigo?")**
+
+> *Exposición con tensión inmediata*
+
+**Objetivo narrativo:** Anclar el problema global en algo local e íntimo. 
+
+* No empezar con *"el mundo enfrenta…"* sino con un dato que golpee: *"En tu colonia, 85% de los hogares…"*
+
+## Acto 2 — La Escalada
+
+**"¿Qué tan grave es?")**
+
+> *Rising action: mostrar la tendencia que empeora*
+
+**Objetivo narrativo:** Construir tensión con datos temporales. 
+
+* El lector debe sentir que el tiempo se acaba.
+
+## Acto 3 — El Clímax 
+
+**"El momento de la verdad")**
+
+> *La gráfica que cambia todo*
+
+**Objetivo narrativo:** Una sola visualización que condensa la paradoja o la injusticia central. 
+
+* Debe ser la imagen que el lector recuerde al cerrar el tablero.
+
+## Acto 4 — La Caída 
+
+**"Pero no todo está perdido"**
+
+> *Falling action: mostrar casos de éxito locales reales*
+
+**Objetivo narrativo:** Romper el pesimismo con evidencia.
+
+* No usar promesas institucionales, sino con datos de comunidades que sí lo lograron — y mostrar *cómo*.
+
+## Acto 5 — La Resolución 
+
+**"Tú puedes ser parte")**
+
+> *Llamado a la acción basado en datos*
+
+**Objetivo narrativo:** El tablero termina con una pregunta abierta, no con una conclusión cerrada. 
+
+* El lector debe sentir que tiene poder de actuar, que no es un espectador pasivo sino alguien cuyas decisiones o acciones importan.
+
+## XYZ
+
+* La idea viene del diseño de videojuegos, donde la acción del jugador es fundamental: 
+    - el jugador siente que sus elecciones tienen consecuencias reales dentro del mundo del juego. 
+* Los mejores tableros de datos hacen lo mismo — convierten al lector en protagonista, no en audiencia.
+
+## XYZ
+
+* En el contexto del tablero de ODS, significa que al terminar de ver los datos, el usuario no piensa *"qué triste, qué problema tan grande"* y cierra la pestaña — sino que piensa *"yo puedo hacer algo al respecto"*.
+
+* Es lo contrario de la parálisis por análisis o el llamado **doom scrolling**: cuando los datos son tan abrumadores que en lugar de motivar, paralizan.
+
+## XYZ
+
+* En la práctica, se logra con cosas como:
+    - Terminar con una pregunta abierta en lugar de una conclusión cerrada
+    - Mostrar casos donde comunidades pequeñas sí lograron cambios reales
+    - Incluir una calculadora de impacto donde el usuario experimenta con variables
+    - Que el lenguaje diga "¿qué harías tú?" en lugar de "esto es lo que los gobiernos deben hacer"
+
+## ¿Qué harías tú con estos datos?
+
+Este tablero no termina aquí — termina cuando alguien toma una decisión.
+
+[Formulario de compromiso / liga a recursos locales]
+
+
+## Criterios de evaluación diferenciada.
+
+<font style="font-size:20px;">
+
+| Criterio | Peso | Lo que la IA puede hacer | Lo que requiere criterio humano |
+|----------|------|--------------------------|----------------------------------|
+| **Calidad narrativa** | 35% | Texto genérico sobre ODS | Anotaciones contextualizadas, dato gancho local |
+| **Coherencia del arco** | 20% | Secciones separadas | Tensión que fluye entre actos |
+| **Pertinencia local** | 20% | Datos nacionales | Conexión con problema específico del equipo |
+| **Uso técnico de Quarto+Plotly** | 15% | Dashboard funcional | Interactividad que sirve la narrativa |
+| **Diseño editorial** | 10% | Colores por defecto | Sistema visual con intención |
+
+</font>
+
+## Lo que hace este enfoque difícil de delegar a la IA
+
+<font style="font-size:25px;">
+
+1. **Las anotaciones narrativas** (`add_annotation`) requieren saber *por qué* ese momento en la línea de tiempo importa en el contexto local
+2. **El dato gancho del Act 0** exige haber investigado algo específico de la comunidad del equipo
+3. **La selección del ODS y el municipio/región** debe justificarse con experiencia vivida o investigación original
+4. **La voz editorial** en los `callout-hook` y `insight-box` revela si hay un humano con criterio detrás
+
+</font>

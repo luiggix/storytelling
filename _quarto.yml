@@ -1,0 +1,10 @@
+project:
+  title: "story"
+
+format:
+  revealjs:
+    theme: simple
+    slide-number: true
+    code-fold: false
+
+
