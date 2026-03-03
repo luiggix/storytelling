@@ -37,7 +37,7 @@ Freytag también incluyó tres momentos críticos: la "fuerza excitante" (incide
 
 ### Filosofía de diseño narrativo
 
-* El tablero **no es una colección de gráficas** — es una historia que el usuario *vive* mientras se desplaza en las diferentes secciones. 
+* El tablero **no es una colección de gráficas**, es una historia que el usuario *vive* mientras se desplaza en las diferentes secciones. 
 * Cada sección corresponde a una etapa del arco dramático de Freytag, y la transición entre ellas debe sentirse como un giro emocional, no como un cambio de pestaña.
 
 ---
@@ -83,7 +83,7 @@ Freytag también incluyó tres momentos críticos: la "fuerza excitante" (incide
 
 **Objetivo narrativo:** Romper el pesimismo con evidencia.
 
-* No usar promesas institucionales, sino con datos de comunidades que sí lo lograron — y mostrar *cómo*.
+* No usar promesas institucionales, sino con datos de comunidades que sí lo lograron y mostrar *cómo*.
 
 ## Acto 5 — La Resolución 
 
@@ -99,11 +99,11 @@ Freytag también incluyó tres momentos críticos: la "fuerza excitante" (incide
 
 * La idea viene del diseño de videojuegos, donde la acción del jugador es fundamental: 
     - el jugador siente que sus elecciones tienen consecuencias reales dentro del mundo del juego. 
-* Los mejores tableros de datos hacen lo mismo — convierten al lector en protagonista, no en audiencia.
+* Los mejores tableros de datos hacen lo mismo, convierten al lector en protagonista, no en audiencia.
 
 ## XYZ
 
-* En el contexto del tablero de ODS, significa que al terminar de ver los datos, el usuario no piensa *"qué triste, qué problema tan grande"* y cierra la pestaña — sino que piensa *"yo puedo hacer algo al respecto"*.
+* En el contexto del tablero de ODS, significa que al terminar de ver los datos, el usuario no piensa *"qué triste, qué problema tan grande"* y cierra la pestaña, sino que piensa *"yo puedo hacer algo al respecto"*.
 
 * Es lo contrario de la parálisis por análisis o el llamado **doom scrolling**: cuando los datos son tan abrumadores que en lugar de motivar, paralizan.
 
@@ -117,7 +117,7 @@ Freytag también incluyó tres momentos críticos: la "fuerza excitante" (incide
 
 ## ¿Qué harías tú con estos datos?
 
-Este tablero no termina aquí — termina cuando alguien toma una decisión.
+Este tablero no termina aquí, termina cuando alguien toma una decisión.
 
 [Formulario de compromiso / liga a recursos locales]
 
@@ -131,7 +131,7 @@ Este tablero no termina aquí — termina cuando alguien toma una decisión.
 | **Calidad narrativa** | 35% | Texto genérico sobre ODS | Anotaciones contextualizadas, dato gancho local |
 | **Coherencia del arco** | 20% | Secciones separadas | Tensión que fluye entre actos |
 | **Pertinencia local** | 20% | Datos nacionales | Conexión con problema específico del equipo |
-| **Uso técnico de Quarto+Plotly** | 15% | Dashboard funcional | Interactividad que sirve la narrativa |
+| **Uso técnico de Quarto+Plotly** | 15% | Dashboard funcional | Interactividad que sirve a la narrativa |
 | **Diseño editorial** | 10% | Colores por defecto | Sistema visual con intención |
 
 </font>
@@ -141,8 +141,8 @@ Este tablero no termina aquí — termina cuando alguien toma una decisión.
 <font style="font-size:25px;">
 
 1. **Las anotaciones narrativas** (`add_annotation`) requieren saber *por qué* ese momento en la línea de tiempo importa en el contexto local
-2. **El dato gancho del Act 0** exige haber investigado algo específico de la comunidad del equipo
+2. **El dato gancho del Acto 1** exige haber investigado algo específico de la comunidad del equipo
 3. **La selección del ODS y el municipio/región** debe justificarse con experiencia vivida o investigación original
-4. **La voz editorial** en los `callout-hook` y `insight-box` revela si hay un humano con criterio detrás
+4. **La voz editorial** en los `callout-hook` e `insight-box` revela si hay un humano con criterio detrás
 
 </font>
